@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300:n,b,i,bi|&subset=latin,cyrillic" data-reactid=".0.0.$gf_0">
+        <link rel="stylesheet" type="text/css" href="calculate.css" />
+        <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="calculate.js"></script>
+    </head>
+    <body>
+        <p>Внимание! Хронометраж произведения указывается на финальном этапе расчета стоимости.</p>
+        <table id="calculator">
+            <tr>
+                <td><b>Базовая Ставка<br />Композитора</b></td>
+                <td><input type="text" name="def_rate" id="def_rate" class="numbersOnly" value="0" /></td>
+            </tr>
+            <tr>
+                <td><b>Количество Роликов<br />с Данной Музыкой</b></td>
+                <td><input type="text" name="count_tracks" id="count_tracks" class="numbersOnly" value="1" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Общее Количество Катдаунов</b></td>
+            </tr>
+            <tr>
+                <td>Бесплатно</td>
+                <td><input type="text" name="cutdowns_free" id="cutdowns_free" class="numbersOnly" disabled="true" /></td>
+            </tr>
+            <tr>
+                <td>Дополнительно</td>
+                <td><input type="text" name="cutdowns_extra" id="cutdowns_extra" class="numbersOnly" /></td>
+            </tr>
+            <tr>
+                <td>Всего</td>
+                <td><input type="text" name="cutdowns_total" id="cutdowns_total" class="numbersOnly" disabled="true" /></td>
+            </tr>
+            <tr>
+                <td><b>Виды<br />Лицензирования</b></td>
+                <td>
+                    <input type="radio" name="lic_types[]" value="std" checked="checked" /> Стандартная Исключительная Лицензия<br />
+                    <input type="radio" name="lic_types[]" value="unlim" /> Неограниченная Исключительная Лицензия<br />(ограничено только количество роликов)<br />
+                    <input type="radio" name="lic_types[]" value="full" /> Полное Отчуждение (без ограничений)
+                </td>
+            </tr>
+            <tr class="option_std">
+                <td colspan="2"><b>Объем лицензирования</b></td>
+            </tr>
+            <tr class="option_std">
+                <td>Виды<br />Медиа</td>
+                <td>
+                    <div id="licences">
+                        <input type="checkbox" name="lic_media[]" value="1" id="l_full" checked="checked" /> Полная (все медиа, кроме радио)<br />
+                        <input type="checkbox" name="lic_media[]" value="0.5" id="l_public" disabled="disabled" /> Публичное Воспроизведение<br />
+                        <input type="checkbox" name="lic_media[]" value="0.5" id="l_radio" /> Радио<br />
+                        <input type="checkbox" name="lic_media[]" value="0.5" id="l_internet" disabled="disabled" /> Интернет
+                    </div>
+                </td>
+            </tr>
+            <tr class="option_std">
+                <td>Страна<br />Лицензирования</td>
+                <td>
+                    <div id="div_countries">
+                        <select name="countries[]" class="countries" id="select_countries">
+                            <option value="100" cntrid="rus">Россия</option>
+                            <optgroup label="Бывший СССР">
+                                <option value="25" cntrid="aze">Азербайджан</option>
+                                <option value="25" cntrid="arm">Армения</option>
+                                <option value="25" cntrid="blr">Беларусь</option>
+                                <option value="30" cntrid="geo">Грузия</option>
+                                <option value="40" cntrid="kaz">Казахстан</option>
+                                <option value="25" cntrid="kgz">Кыргызстан</option>
+                                <option value="25" cntrid="lva">Латвия</option>
+                                <option value="25" cntrid="ltu">Литва</option>
+                                <option value="25" cntrid="mda">Молдова</option>
+                                <option value="25" cntrid="tjk">Таджикистан</option>
+                                <option value="25" cntrid="tkm">Туркменистан</option>
+                                <option value="30" cntrid="uzb">Узбекистан</option>
+                                <option value="30" cntrid="ukr">Украина</option>
+                                <option value="30" cntrid="other_ussr">Прочие республики БСССР</option>
+                                <option value="225" cntrid="all_ussr">ВЕСЬ БЫВШИЙ СССР</option>
+                            </optgroup>
+                            <optgroup label="Европейские страны">
+                                <option value="30" cntrid="aut">Австрия</option>
+                                <option value="25" cntrid="azo">Азорские острова</option>
+                                <option value="25" cntrid="alb">Албания</option>
+                                <option value="25" cntrid="and">Андорра</option>
+                                <option value="50" cntrid="bel">Бельгия</option>
+                                <option value="40" cntrid="bgr">Болгария</option>
+                                <option value="50" cntrid="hun">Венгрия</option>
+                                <option value="200" cntrid="deu">Германия</option>
+                                <option value="25" cntrid="gib">Гибралтар</option>
+                                <option value="50" cntrid="grc">Греция</option>
+                                <option value="30" cntrid="geo">Грузия</option>
+                                <option value="40" cntrid="dnk">Дания</option>
+                                <option value="40" cntrid="irl">Ирландия</option>
+                                <option value="25" cntrid="isl">Исландия</option>
+                                <option value="75" cntrid="esp">Испания</option>
+                                <option value="100" cntrid="ita">Италия</option>
+                                <option value="25" cntrid="cyp">Кипр</option>
+                                <option value="25" cntrid="kos">Косово</option>
+                                <option value="25" cntrid="lux">Люксембург</option>
+                                <option value="25" cntrid="mlt">Мальта</option>
+                                <option value="25" cntrid="mco">Монако</option>
+                                <option value="40" cntrid="nld">Нидерланды</option>
+                                <option value="40" cntrid="nor">Норвегия</option>
+                                <option value="40" cntrid="pol">Польша</option>
+                                <option value="40" cntrid="rom">Румыния</option>
+                                <option value="50" cntrid="srb">Сербия</option>
+                                <option value="50" cntrid="svk">Словакия</option>
+                                <option value="50" cntrid="svn">Словения</option>
+                                <option value="40" cntrid="fin">Финляндия</option>
+                                <option value="125" cntrid="fra">Франция</option>
+                                <option value="40" cntrid="hrv">Хорватия</option>
+                                <option value="50" cntrid="cze">Чехия</option>
+                                <option value="50" cntrid="che">Швейцария</option>
+                                <option value="50" cntrid="swe">Швеция</option>
+                                <option value="25" cntrid="est">Эстония</option>
+                                <option value="400" cntrid="all_eurp">ВСЯ ЕВРОПА</option>
+                            </optgroup>
+                            <optgroup label="Азиатские страны">
+                                <option value="25" cntrid="bgd">Бангладеш</option>
+                                <option value="25" cntrid="bir">Бирма</option>
+                                <option value="25" cntrid="brn">Бруней</option>
+                                <option value="25" cntrid="vnm">Вьетнам</option>
+                                <option value="50" cntrid="hkg">Гонконг</option>
+                                <option value="25" cntrid="oit">Диего-Гарсия</option>
+                                <option value="150" cntrid="ind">Индия</option>
+                                <option value="50" cntrid="cntridn">Индонезия</option>
+                                <option value="25" cntrid="khm">Камбоджия</option>
+                                <option value="300" cntrid="chn">Китай</option>
+                                <option value="25" cntrid="prk">Корея (северная)</option>
+                                <option value="50" cntrid="kor">Корея (южная)</option>
+                                <option value="25" cntrid="lao">Лаос</option>
+                                <option value="25" cntrid="mac">Макао</option>
+                                <option value="50" cntrid="mys">Малайзия</option>
+                                <option value="25" cntrid="mdv">Мальдивы</option>
+                                <option value="25" cntrid="mng">Монголия</option>
+                                <option value="25" cntrid="npl">Непал</option>
+                                <option value="40" cntrid="pak">Пакистан</option>
+                                <option value="50" cntrid="sgp">Сингапур</option>
+                                <option value="50" cntrid="tha">Таиланд</option>
+                                <option value="25" cntrid="twn">Тайвань</option>
+                                <option value="25" cntrid="phl">Филиппины</option>
+                                <option value="25" cntrid="lka">Шри-Ланка</option>
+                                <option value="250" cntrid="jpn">Япония</option>
+                                <option value="500" cntrid="all_asia">ВСЯ АЗИЯ</option>
+                            </optgroup>
+                        </select>
+                        <div class="plus_countries" onclick="plus_countries();">+</div>
+                        <div class="clear"></div>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr class="option_std">
+                <td>Срок<br />Лицензирования</td>
+                <td>
+                    <select name="time">
+                        <option value="0.7">Менее 3х месяцев</option>
+                        <option value="1" selected="selected">1 год</option>
+                        <option value="1.5">1.5 года</option>
+                        <option value="2">2 года</option>
+                        <option value="2.5">3 года</option>
+                        <option value="3">5 лет</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Хронометраж ролика</b></td>
+                <td>
+                    <select name="chronometry">
+                        <option class="option_std" value="0.7">до 15 секунд</option>
+                        <option class="option_std" value="1" selected="selected">от 16-ти до 30 секунд</option>
+                        <option class="option_std" value="1.2">от 45 секунд</option>
+                        <option class="option_std" value="1.5">от 60 секунд</option>
+                        <option class="option_std" value="2.0">от 120 секунд</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Дополнительные Расходы</b></td>
+            </tr>
+            <tr>
+                <td>Расходы на<br />Исполнителей</td>
+                <td><input type="text" name="expenses_performer" class="fourNumbersOnly" /></td>
+            </tr>
+            <tr>
+                <td>Студийные<br />Расходы</td>
+                <td><input type="text" name="expenses_studio" class="fourNumbersOnly" /></td>
+            </tr>
+            <tr>
+                <td><b>Итого*</b><br />* без учета налогов</td>
+                <td><input type="text" id="total" disabled="disabled" value="0" /></td>
+            </tr>
+        </table>
+</body>
+</html>

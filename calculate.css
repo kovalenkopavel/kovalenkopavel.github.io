@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+table td {
+	vertical-align: top;
+	padding: 10px;
+}
+.countries {
+	float: left;
+}
+.plus_countries, .minus_countries {
+	float: right;
+	margin-left: 10px;
+	background: #dedede;
+	padding: 2px 5px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.minus_countries {
+	padding: 2px 7px;
+}
+.category-select-sub {
+	display: none;
+}
+.clear {
+	clear: both;
+	height: 10px;
+}
+input[type='text'], select  {
+	width: 157px;
+}
+#calculator {
+	font-family: open sans condensed,sans-serif;
+}
+#calculator input, #calculator select, #calculator option {
+	font-family: Tahoma, Arial ,sans-serif;
+}
